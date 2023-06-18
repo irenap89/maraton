@@ -1,0 +1,53 @@
+.bg_general_div{
+    background-color: gray;
+    width: 800px;
+    height: 500px;
+    margin: 0 auto;
+    border-radius: 8px;
+    margin-top: 100px;
+    position:relative;
+}
+
+.bg_top_menu{
+
+    height: 78px;
+
+}
+
+.bg_top_menu_title{
+    color: white;
+    font-size: 40px;
+    text-align: right;
+    margin-right: 15px;
+}
+
+.bg_top_menu_button{
+    background-color: blue;
+    width: 120px;
+    border-radius: 25px;
+    padding: 9px;
+    text-align: right;
+    background-repeat: no-repeat;
+    background-position: 12px 12px;
+    color: white;
+    font-size: 14px;
+    background-image: url('./../../images/Upload.png');
+    position:absolute;
+    top: 55px;
+    left: 11px;
+}
+
+.bg_top_menu_sub_title{
+    position: absolute;
+    left: 158px;
+    top: 61px;
+    direction: rtl;
+    color: white;
+}
+
+           
+.bg_close_btn{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
