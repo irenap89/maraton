@@ -6,6 +6,9 @@ import banner from './../../images/banner.png'
 import logo from './../../images/logo.png'
 import DownloadImg from './../DownloadImg/DownloadImg'
 
+import Bgoriginal from './../Bgoriginal/Bgoriginal'
+
+import Bgnobg from './../Bgnobg/Bgnobg'
 
 function Bg() {
   return (
@@ -35,8 +38,9 @@ function Bg() {
 
             <div className="bg_body_left_middle">
 
-            {/* <Bgnogb/>
-            <Bgoriginal/> */}
+            
+            <Bgnobg/>
+            <Bgoriginal/>
 
             </div>
               <div className="bg_body_eula">
