@@ -4,6 +4,8 @@ import './Bg.css';
 import close from './../../images/close.png'
 import banner from './../../images/banner.png'
 import logo from './../../images/logo.png'
+import DownloadImg from './../DownloadImg/DownloadImg'
+
 
 function Bg() {
   return (
@@ -33,17 +35,21 @@ function Bg() {
 
             <div className="bg_body_left_middle">
 
+            {/* <Bgnogb/>
+            <Bgoriginal/> */}
+
             </div>
               <div className="bg_body_eula">
                 על ידי העלאת תמונה אתה מסכים לתנאים וההגבלות שלנו. וחלים מדיניות ופרטיות ותנאי השימוש
               </div>
+              <div className="bg_body_eula_btn"> תקנון חברה </div>
           </div>
 
 
 
           <div className='bg_body_right'> 
             <div className="bg_body_right_middle">
-
+            <DownloadImg/>
             </div>
           </div>
 
