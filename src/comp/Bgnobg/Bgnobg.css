@@ -1,0 +1,46 @@
+.Bgnobg_text{
+    color: #03A9F4;
+    text-align: right;
+    width: 100%;
+    position: absolute;
+    font-size: 10px;
+    top: 10px;
+    right: 14px;
+    background-repeat: no-repeat;
+    background-position: 547px;
+    padding-right: 19px;
+    background-image: url('./../../images/warning.png');
+}
+
+.color_input{
+    opacity: 0;
+    position: absolute;
+    top: 20px;
+    left: -110px;
+}
+
+.bg_color_div{
+    border-radius: 25px;
+    height: 32px;
+    border: 1px solid gray;
+    width: 98px;
+    text-align: right;
+    padding-right: 10px;
+    color: gray;
+    font-size: 12px;
+    line-height: 28px;
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    cursor: pointer;
+}
+
+.show_selected_color{
+    position: absolute;
+    height: 32px;
+    width: 40px;
+    top: 0px;
+    left: 0px;
+    border-top-left-radius: 18px;
+    border-bottom-left-radius: 18px;
+}

@@ -10,7 +10,20 @@ import Bgoriginal from './../Bgoriginal/Bgoriginal'
 
 import Bgnobg from './../Bgnobg/Bgnobg'
 
+import React , {useState} from 'react';
+
 function Bg() {
+
+  const [bg_type, setbg_type] = useState(true);
+
+  function change_bg_type() {
+    setbg_type(false);
+  }
+
+  function change_bg_type_remove() {
+    setbg_type(true);
+  }
+
   return (
    <div className="bg_general_div">
         <div className='bg_top_menu'> 
@@ -25,11 +38,11 @@ function Bg() {
         <div className='bg_body_area'>
           <div className='bg_body_left'> 
             <div className='bg_body_tabs'>
-              <div className="bg_body_bg_remove"> 
+              <div className="bg_body_bg_remove" onClick={change_bg_type_remove}> 
               <span className="bg_body_bg_remove_text">הוסר רקע  </span>
               
               </div>
-              <div className="bg_body_bg_original">
+              <div className="bg_body_bg_original" onClick={change_bg_type}>
               <span className="bg_body_bg_remove_text">
                 מקורי 
                 </span>
@@ -38,9 +51,8 @@ function Bg() {
 
             <div className="bg_body_left_middle">
 
-            
-            <Bgnobg/>
-            <Bgoriginal/>
+            {bg_type ? <Bgnobg/> :   <Bgoriginal/>}
+           
 
             </div>
               <div className="bg_body_eula">
