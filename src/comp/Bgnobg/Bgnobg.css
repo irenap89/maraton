@@ -44,3 +44,16 @@
     border-top-left-radius: 18px;
     border-bottom-left-radius: 18px;
 }
+
+.display_uploaded_image{
+    width: 278px;
+    position: relative;
+    margin: 0 auto;
+    border: 1px solid white;
+    top: 50px;
+    height: 238px;
+}
+
+.display_uploaded_image_image{
+    width:100%;
+}

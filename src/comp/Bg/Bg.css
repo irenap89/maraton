@@ -36,6 +36,7 @@
     position:absolute;
     top: 55px;
     left: 11px;
+    cursor:pointer;
 }
 
 .bg_top_menu_sub_title{
@@ -113,13 +114,14 @@
     background-repeat: no-repeat;
     background-position: 56px 3px;
     height: 28px;
-    border-bottom: 4px solid #9C27B0;;
+ 
 }
 
 .bg_body_bg_original{
     background-image: url("./../../images/tab_left.png");
     background-repeat: no-repeat;
     background-position: 56px 3px;
+    height: 28px;
 }
 
 .bg_body_bg_remove_text{
@@ -163,4 +165,8 @@
     background-image: url("./../../images/eula.png");
     background-repeat: no-repeat;
     background-position: 14px 11px;
+}
+
+.input_file_upload{
+    display:none;
 }
