@@ -71,7 +71,7 @@ function Bg() {
 
             <div className="bg_body_left_middle">
 
-            {bg_type ? <Bgnobg /> :   <Bgoriginal img={uploaded_image}/>}
+            {bg_type ? <Bgnobg img={uploaded_image}/> :   <Bgoriginal img={uploaded_image}/>}
            
 
             </div>

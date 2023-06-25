@@ -1,8 +1,7 @@
 import './Bgnobg.css';
 
 import React , {useState, useRef, useEffect} from 'react';
-import { RemoveBgResult, RemoveBgError, removeBackgroundFromImageUrl } from "remove.bg";
-
+import axios from 'axios';
 
 function Bgnobg(props) {
 
@@ -12,12 +11,43 @@ function Bgnobg(props) {
 
     useEffect(() => {
         if(props.img) {
-            setimg(URL.createObjectURL(props.img));
-            removeBackgroundFromImageUrl();
+           // setimg(props.img);
+           
+            // axios.post('http://localhost:5000/send_image')
+            // .then(res => {
+            //  // const persons = res.data;
+            // //  this.setState({ persons });
+            // })
+
+          //  console.log(props.img);
+            onFileUpload(props.img);
+
         }
     },[props.img]);
 
   
+    function onFileUpload (img_file) {
+ console.log('dfgsfdgsdfg');
+        // Create an object of formData
+        const formData = new FormData();
+ 
+        console.log(img_file);
+        // Update the formData object
+        formData.append(
+           "gfh",
+            img_file,
+            img_file.name
+        );
+ 
+        // // Details of the uploaded file
+        // console.log(this.state.selectedFile);
+ 
+        // Request made to the backend api
+        // Send formData object
+        axios.post("http://localhost:5000/send_image", formData);
+    };
+
+
 
     function choose_color_input() {
         inputElement.current.click();
@@ -26,25 +56,6 @@ function Bgnobg(props) {
     function choose_color_click(e) {
         setchoosed_color(e.target.value);
     }
-
-
-
- 
-        const url = props.img;
-        const outputFile = 'changed_bg_files/img-removed-from-file.png';
-        
-        removeBackgroundFromImageUrl({
-        url,
-        apiKey: "YOUR-API-KEY",
-        size: "regular",
-        type: "person",
-        outputFile 
-        }).then((result) => {
-            console.log(`File saved to ${outputFile}`);
-             const base64img = result.base64img;
-        }).catch((errors) => {
-            console.log(JSON.stringify(errors));
-        });
 
     return (
             <div>
