@@ -1,44 +1,40 @@
 const express = require('express')
 const app = express()
 var cors = require('cors')
-var multer = require('multer');
+const fileupload = require("express-fileupload");
 const port = 5000
 
-//const fileUpload = require("express-fileupload");
-//app.use(fileUpload());
-var upload = multer({ dest: 'uploaded_img/' });
-
-
+app.use(fileupload());
+app.use(express.static("files"));
 app.use(cors())
 
+const bodyParser = require('body-parser');
+ 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+var send_img_to_API = require('./send_img_to_API');
 
-// app.post('/send_image', upload.single('uploaded_file'), function (req, res) {
+app.post("/send_image", (req, res) => {
+  const newpath = __dirname + "/uploaded_img/";
+  const file = req.files.file;
+  var now = new Date().getTime();
+  const filename =  now + file.name ;
+ 
+  file.mv(`${newpath}${filename}`, (err) => {
+    if (err) {
+      res.status(500).send({ message: "File upload failed", code: 200 });
+    }
+    res.status(200).send({ message: "File Uploaded", code: 200 });
+  });
 
-//     console.log(req.file, req.body)
-//  });
-
-
-
- app.post('/send_image', function (req,res) {
-
-   console.log(req.file);
-
-//     var tmp_path = req.files.recfile.path;
-//     var target_path = 'uploaded_img/' + req.files.recfile.name;
-//   fs.readFile(tmp_path, function(err, data)
-//   {
-//     fs.writeFile(target_path, data, function (err)
-//     {
-//       res.render('complete');
-//     })
-//   });
+  send_img_to_API(`${newpath}${filename}` , filename );
 
 });
 
-// app.post('/send_image', (req, res) => {
-//     console.log('here in the backend');
-//     res.send("POST Request Called")
-// })
+
+
+//API key - XzCdjMS2JLFbE8gz4HABrk81
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

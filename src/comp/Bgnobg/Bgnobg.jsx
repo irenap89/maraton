@@ -11,40 +11,25 @@ function Bgnobg(props) {
 
     useEffect(() => {
         if(props.img) {
-           // setimg(props.img);
-           
-            // axios.post('http://localhost:5000/send_image')
-            // .then(res => {
-            //  // const persons = res.data;
-            // //  this.setState({ persons });
-            // })
-
-          //  console.log(props.img);
             onFileUpload(props.img);
-
         }
     },[props.img]);
 
-  
-    function onFileUpload (img_file) {
- console.log('dfgsfdgsdfg');
-        // Create an object of formData
+       const onFileUpload = async (img_file) => {
+        let Headers= {
+            "Content-type": "multipart/form-data"
+        };
+
         const formData = new FormData();
- 
-        console.log(img_file);
-        // Update the formData object
-        formData.append(
-           "gfh",
-            img_file,
-            img_file.name
-        );
- 
-        // // Details of the uploaded file
-        // console.log(this.state.selectedFile);
- 
-        // Request made to the backend api
-        // Send formData object
-        axios.post("http://localhost:5000/send_image", formData);
+        formData.append("file", img_file);
+        formData.append("fileName", img_file.name);
+
+        try {
+          const res = axios.post("http://localhost:5000/send_image", formData, Headers);
+          console.log(res);
+        } catch (ex) {
+          console.log(ex);
+        }
     };
 
 
