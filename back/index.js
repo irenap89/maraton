@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 var send_img_to_API = require('./send_img_to_API');
 
-app.post("/send_image", (req, res) => {
+app.post("/send_image",  (req, res) => {
   const newpath = __dirname + "/uploaded_img/";
   const file = req.files.file;
   var now = new Date().getTime();
@@ -24,11 +24,17 @@ app.post("/send_image", (req, res) => {
     if (err) {
       res.status(500).send({ message: "File upload failed", code: 200 });
     }
-    res.status(200).send({ message: "File Uploaded", code: 200 });
+
+    try {
+      (async () => {
+       await send_img_to_API(`${newpath}${filename}` , filename );
+        res.sendFile( __dirname + "/uploaded_img_no_bg/" + filename);
+      })();
+    } catch (err) {
+      res.status(500).send({ message: "File upload failed", code: 200 });
+    }
   });
-
-  send_img_to_API(`${newpath}${filename}` , filename );
-
+ 
 });
 
 
