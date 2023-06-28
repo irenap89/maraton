@@ -8,6 +8,8 @@ app.use(fileupload());
 app.use(express.static("files"));
 app.use(cors())
 
+app.use(express.static('uploaded_img_no_bg'))
+
 const bodyParser = require('body-parser');
  
 app.use(bodyParser.json());
@@ -28,7 +30,8 @@ app.post("/send_image",  (req, res) => {
     try {
       (async () => {
        await send_img_to_API(`${newpath}${filename}` , filename );
-        res.sendFile( __dirname + "/uploaded_img_no_bg/" + filename);
+
+        res.status(200).send({ imageName: filename, code: 200 });
       })();
     } catch (err) {
       res.status(500).send({ message: "File upload failed", code: 200 });

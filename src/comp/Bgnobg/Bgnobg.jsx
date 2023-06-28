@@ -2,6 +2,7 @@ import './Bgnobg.css';
 
 import React , {useState, useRef, useEffect} from 'react';
 import axios from 'axios';
+import {Buffer} from 'buffer';
 
 function Bgnobg(props) {
 
@@ -11,11 +12,11 @@ function Bgnobg(props) {
 
     useEffect(() => {
         if(props.img) {
-            onFileUpload(props.img);
+          onFileUpload(props.img);
         }
     },[props.img]);
 
-       const onFileUpload = async (img_file) => {
+    const onFileUpload = async (img_file) => {
         let Headers= {
             "Content-type": "multipart/form-data"
         };
@@ -25,8 +26,15 @@ function Bgnobg(props) {
         formData.append("fileName", img_file.name);
 
         try {
-          const res = axios.post("http://localhost:5000/send_image", formData, Headers);
-          console.log(res);
+        axios.post("http://localhost:5000/send_image", formData, Headers).then(res => 
+        {
+      
+            let img_path='http://localhost:5000/'+res.data.imageName;
+      
+            setimg(img_path);
+
+        });
+
         } catch (ex) {
           console.log(ex);
         }
@@ -42,6 +50,8 @@ function Bgnobg(props) {
         setchoosed_color(e.target.value);
     }
 
+  
+
     return (
             <div>
                     <div className="Bgnobg_text">אל תשכחו להוריד את הקבצים. הם ימחקו אוטומטית כשתצא מהדף </div>
@@ -56,7 +66,7 @@ function Bgnobg(props) {
 
 
                     <div className="display_uploaded_image"> 
-                        <img src={img}  className="display_uploaded_image_image"/>
+                        <img  src={img} className="display_uploaded_image_image"/>
 
                     </div>
             </div>
