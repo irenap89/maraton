@@ -7,12 +7,13 @@ import {Buffer} from 'buffer';
 function Bgnobg(props) {
 
     const [choosed_color, setchoosed_color] = useState('transapent');
-    const [img, setimg] = useState();
+    const [img, setimg] = useState(props.image_afer_action_prop);
     const inputElement = useRef();
 
     useEffect(() => {
-        if(props.img) {
+        if(props.img && props.flag) {
           onFileUpload(props.img);
+          props.update_flag_prop();
         }
     },[props.img]);
 
@@ -32,6 +33,7 @@ function Bgnobg(props) {
             let img_path='http://localhost:5000/'+res.data.imageName;
       
             setimg(img_path);
+            props.image_afer_action_func_prop(img_path);
 
         });
 

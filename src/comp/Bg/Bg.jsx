@@ -22,6 +22,9 @@ function Bg() {
 
   const [uploaded_image, setuploaded_image] = useState('');
 
+  const [flag_image_upload, setflag_image_upload] = useState(false);
+
+  const [image_afer_action, setimage_afer_action] = useState('');
 
   function change_bg_type() {
     setbg_type(false);
@@ -36,12 +39,21 @@ function Bg() {
   }
 
   function choose_upload_file(event) {
-  //  console.log(event.target.files[0]);
     setuploaded_image(event.target.files[0]);
+    setflag_image_upload(true);
   }
 
   function choose_file_input() {
     inputElementFile.current.click();
+  }
+
+  function update_flag(){
+    setflag_image_upload(false);
+  }
+
+  function image_afer_action_func(img){
+    debugger;
+    setimage_afer_action(img);
   }
 
   return (
@@ -71,7 +83,7 @@ function Bg() {
 
             <div className="bg_body_left_middle">
 
-            {bg_type ? <Bgnobg img={uploaded_image}/> :   <Bgoriginal img={uploaded_image}/>}
+            {bg_type ? <Bgnobg img={uploaded_image} flag={flag_image_upload} update_flag_prop={update_flag} image_afer_action_func_prop={image_afer_action_func} image_afer_action_prop={image_afer_action}/> :   <Bgoriginal img={uploaded_image}/>}
            
 
             </div>
